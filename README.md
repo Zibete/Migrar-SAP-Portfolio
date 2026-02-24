@@ -1,4 +1,4 @@
-﻿# Migración y Validación de Facturas (AP) — Automatización end-to-end (Excel VBA + Python)
+# Migración y Validación de Facturas (AP) — Automatización end-to-end (Excel VBA + Python)
 
 ![Excel](https://img.shields.io/badge/Excel-VBA-217346)
 ![Python](https://img.shields.io/badge/Python-Automation-3776AB)
@@ -45,48 +45,74 @@ Este repositorio presenta una automatización real (portfolio-safe) de **Cuentas
 - **Evidencia reproducible sin VPN**: tests headless del core + scans de prepublicación + export del paquete público.
 
 ---
-
 ## 🧭 Flujo end-to-end
-
 ```mermaid
-flowchart LR
-  %% ===== Etapas =====
-  subgraph S1[Ingesta de documentos]
-    A1[Outlook / Adjuntos PDF] --> A2[Organización / Normalización]
-    A2 --> A3[Importación masiva en Excel]
-  end
+flowchart TD
+%% ===== ESTILOS =====
+    classDef ingesta   fill:#1e3a5f,stroke:#4a9eff,color:#fff
+    classDef parsing   fill:#1a472a,stroke:#4caf50,color:#fff
+    classDef cruce     fill:#3d1a5f,stroke:#ce93d8,color:#fff
+    classDef validacion fill:#7a3000,stroke:#ff9800,color:#fff
+    classDef salida    fill:#003d4f,stroke:#26c6da,color:#fff
 
-  subgraph S2[Extracción & Parsing]
-    B1[Lectura PDF por página<br/>(Power Query)] --> B2[Identificación proveedor<br/>(CUIT / heurísticas)]
-    B2 --> B3[Parser por proveedor<br/>VendorXX]
-    B3 --> B4[Tabla operativa<br/>filas estructuradas]
-  end
+%% ===== INGESTA =====
+    subgraph S1["📥  Ingesta de documentos"]
+        A1(["📧 Outlook / Adjuntos PDF"])
+        A2["🗂️ Organización & Normalización"]
+        A3[("📊 Importación masiva en Excel")]
+        A1 --> A2 --> A3
+    end
 
-  subgraph S3[Enriquecimiento & Cruce]
-    C1[Reporte RW (headless)<br/>o Cubo (según config)] --> C2[Match por referencia/remito<br/>+ reglas especiales]
-    C2 --> C3[Campos RW enriquecidos<br/>(pago/anulado/scan/fechas/totales)]
-  end
+%% ===== PARSING =====
+    subgraph S2["🔍  Extracción & Parsing"]
+        B1["📄 Lectura PDF - Power Query"]
+        B2{"🏷️ Identificación de proveedor"}
+        B3["🧩 Parser VendorXX"]
+        B4[("📋 Tabla operativa estructurada")]
+        B1 --> B2 --> B3 --> B4
+    end
 
-  subgraph S4[Validaciones & Decisión]
-    D1[Integridad fiscal<br/>(totales vs componentes)] --> D2[Tolerancias configurables]
-    D2 --> D3[Reglas determinísticas<br/>(fiscal + negocio)]
-    D3 --> D4[Estado por fila + comentarios]
-  end
+%% ===== CRUCE =====
+    subgraph S3["🔗  Enriquecimiento & Cruce"]
+        C1["🌐 Reporte RW headless / Cubo"]
+        C2["🔎 Match referencia/remito + reglas"]
+        C3[("✅ Campos RW enriquecidos")]
+        C1 --> C2 --> C3
+    end
 
-  subgraph S5[Salida / Evidencia]
-    E1[Reporte filtrado<br/>(pendientes / revisar)] --> E2[Acción/seguimiento en SAP<br/>(según entorno)]
-    E3[Tests headless + scan + export<br/>(sin VPN)] --> E4[dist/public_release]
-  end
+%% ===== VALIDACIONES =====
+    subgraph S4["⚙️  Validaciones & Decisión"]
+        D1["🧮 Integridad fiscal"]
+        D2["📐 Tolerancias configurables"]
+        D3{"📏 Reglas determinísticas"}
+        D4[["🏷️ Estado por fila + comentarios"]]
+        D1 --> D2 --> D3 --> D4
+    end
 
-  %% ===== Conexiones entre etapas =====
-  S1 --> S2 --> S3 --> S4 --> S5
-  D4 --> E1
-  D4 --> E2
-  D4 --> E3
+%% ===== SALIDA =====
+    subgraph S5["🚀  Salida / Evidencia"]
+        E1["📊 Reporte filtrado"]
+        E2[("🏢 Acción en SAP")]
+        E3["🧪 Tests + scan + export"]
+        E4[("📦 dist/public_release")]
+        E1 --> E2
+        E3 --> E4
+    end
+
+%% ===== CONEXIONES ENTRE ETAPAS =====
+    A3 --> B1
+    B4 --> C1
+    C3 --> D1
+    D4 --> E1
+    D4 --> E3
+
+%% ===== ASIGNACIÓN DE COLORES =====
+    class A1,A2,A3 ingesta
+    class B1,B2,B3,B4 parsing
+    class C1,C2,C3 cruce
+    class D1,D2,D3,D4 validacion
+    class E1,E2,E3,E4 salida
 ```
-
----
-
 ## ✅ Capacidades (resumen)
 
 ### Ingesta y preparación

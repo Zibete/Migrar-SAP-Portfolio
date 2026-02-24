@@ -9,6 +9,8 @@
 
 Este repositorio presenta una automatización real (portfolio-safe) de **Cuentas a Pagar (AP)**: orquesta el ingreso de **facturas en PDF**, extrae y normaliza datos, cruza contra un portal interno (`RetailWeb`/`RW`), aplica **validaciones fiscales y de negocio**, y prepara/verifica la contabilización y el seguimiento en SAP.
 
+> 📈 **Resultado real:** ~x8 en productividad operativa · de ~60 a ~500 documentos/día · errores operativos reducidos al mínimo
+
 ![Pipeline](assets/demo2.png)
 
 > ⚠️ Versión pública: prioriza **arquitectura + reglas determinísticas + evidencia reproducible** sin exponer datos sensibles. Las integraciones reales (SAP/Outlook/portal) requieren entorno corporativo.
@@ -25,14 +27,16 @@ Este repositorio presenta una automatización real (portfolio-safe) de **Cuentas
 
 ## 🔗 Accesos rápidos
 
-- 📄 **Deck (PDF, 7 slides):** [Migracion-Facturas-AP.pdf](assets/deck/Facturas-ASAP-Portfolio.pdf)
-- 🖥️ **UI principal (capturas):** [TOOL_UI_OVERVIEW.md](docs/TOOL_UI_OVERVIEW.md)
-- 🧩 **UserForms (galería):** [UI_FORMS_GALLERY.md](docs/UI_FORMS_GALLERY.md)
-- 📁 **Descripción General:** [PORTFOLIO_OVERVIEW.md](docs/PORTFOLIO_OVERVIEW.md)
-- 📚 **Case Study técnico:** [CASE_STUDY.md](docs/CASE_STUDY.md)
-- 🧪 **Cómo correr evidencia:** [TESTING.md](docs/TESTING.md)
-- 🗺️ **Mapa del repo:** [MANIFEST.md](docs/MANIFEST.md)
-- 🧩 **Parsers PDF (VendorXX):** [PARSERS.md](docs/PARSERS.md)
+| Tipo | Recurso |
+|---|---|
+| 📄 Deck (PDF, 7 slides) | [Facturas-ASAP-Portfolio.pdf](assets/deck/Facturas-ASAP-Portfolio.pdf) |
+| 🖥️ UI principal (capturas) | [TOOL_UI_OVERVIEW.md](docs/TOOL_UI_OVERVIEW.md) |
+| 🧩 UserForms (galería) | [UI_FORMS_GALLERY.md](docs/UI_FORMS_GALLERY.md) |
+| 📁 Descripción general | [PORTFOLIO_OVERVIEW.md](docs/PORTFOLIO_OVERVIEW.md) |
+| 📚 Case Study técnico | [CASE_STUDY.md](docs/CASE_STUDY.md) |
+| 🧪 Cómo correr evidencia | [TESTING.md](docs/TESTING.md) |
+| 🗺️ Mapa del repo | [MANIFEST.md](docs/MANIFEST.md) |
+| 🧩 Parsers PDF (VendorXX) | [PARSERS.md](docs/PARSERS.md) |
 
 ---
 
@@ -43,6 +47,44 @@ Este repositorio presenta una automatización real (portfolio-safe) de **Cuentas
 - **Motor de decisiones trazable**: estados determinísticos por fila + mensajes consistentes + tolerancias configurables.
 - **Diseño operator-centric**: UX interna (UserForms), controles, progreso, rollback/seguridad, reducción de intervención manual.
 - **Evidencia reproducible sin VPN**: tests headless del core + scans de prepublicación + export del paquete público.
+
+---
+
+## 🧱 Decisiones técnicas clave
+
+| Decisión | Por qué importa |
+|---|---|
+| **Arquitectura híbrida VBA + Python** | Combina la integración nativa Office/SAP (VBA) con la potencia de librerías modernas web/PDF (Python). |
+| **Power Query como ETL embebido** | Uso de `Pdf.Tables` para extracción estructurada sin OCR, con transformaciones declarativas en lenguaje M. |
+| **Separación Core vs Adapters** | Aísla la lógica determinística (reglas) de los side-effects (IO), permitiendo testabilidad real. |
+| **Testing headless** | Runner propio en VBA que ejecuta validaciones con Excel invisible y reporta logs a archivos. |
+| **Publicación segura** | Export a `dist/` sanitizado, scan de términos sensibles y normalización de encoding. |
+
+---
+
+## 🛠️ Stack tecnológico
+
+### ⚙️ Backend / Scripting
+![VBA](https://img.shields.io/badge/VBA-7.1-217346)
+![Python](https://img.shields.io/badge/Python-3.11-3776AB)
+![Pandas](https://img.shields.io/badge/Pandas-Data-150458)
+![PyMuPDF](https://img.shields.io/badge/PyMuPDF-PDF-red)
+
+### 📊 Data & ETL
+![Power Query](https://img.shields.io/badge/Power%20Query-M%20Language-00A1E0)
+![Analysis Services](https://img.shields.io/badge/Analysis%20Services-MDX%2FADOMD-yellow)
+![SQLite](https://img.shields.io/badge/SQLite-Concept-003B57)
+
+### 🔗 Integración
+![SAP](https://img.shields.io/badge/SAP-GUI%20Scripting-0FAAFF)
+![Selenium](https://img.shields.io/badge/Selenium-WebDriver-43B02A)
+![Outlook](https://img.shields.io/badge/Outlook-COM-0078D4)
+
+### 🚀 DevOps & Tooling
+![PowerShell](https://img.shields.io/badge/PowerShell-Automation-5391FE)
+![Git](https://img.shields.io/badge/Git-Version%20Control-F05032)
+![Custom Runner](https://img.shields.io/badge/Custom-Test%20Runner-6E56CF)
+![Public Release](https://img.shields.io/badge/Repo-Sanitizado-success)
 
 ---
 ## 🧭 Flujo end-to-end
@@ -113,6 +155,8 @@ flowchart TD
     class D1,D2,D3,D4 validacion
     class E1,E2,E3,E4 salida
 ```
+---
+
 ## ✅ Capacidades (resumen)
 
 ### Ingesta y preparación
@@ -120,20 +164,28 @@ flowchart TD
 - Importación masiva de PDFs (incluye multipágina).
 - Normalización de referencias y metadatos operativos (sucursal/site, fechas, tipo de doc).
 
+---
+
 ### Extracción (PDF → datos)
 
 - Lectura por página con Power Query.
 - Parsers anonimizados por proveedor (`Vendor01`..`VendorNN`) bajo contrato común.
+
+---
 
 ### Cruce y enriquecimiento
 
 - Cruce contra RetailWeb/RW (descarga y carga de reporte / o cubo según configuración).
 - Match por referencia/remito con reglas especiales (FC/NC y variantes).
 
+---
+
 ### Validaciones y decisión operativa
 
 - Cálculo de integridad fiscal (totales vs componentes: IVA/II/percepciones).
 - Aplicación de tolerancias y reglas determinísticas (estado + comentarios).
+
+---
 
 ### Integraciones
 
@@ -180,7 +232,7 @@ UserForms, progress, manejo de timeouts, rollback, protección de hojas, limpiez
 
 ---
 
-## 🧱 Arquitectura
+## 🗂️ Arquitectura de módulos
 
 | Módulo | Ruta | Descripción |
 |---|---|---|
@@ -213,14 +265,6 @@ powershell -ExecutionPolicy Bypass -File tools/prepublish_scan.ps1
 ```powershell
 powershell -ExecutionPolicy Bypass -File tools/export_public_release.ps1
 ```
-
----
-
-## 🖼️ Material visual
-
-- 📄 **Deck (PDF, 7 slides):** [Facturas-ASAP-Portfolio.pdf](assets/deck/Facturas-ASAP-Portfolio.pdf)
-- 🖥️ **UI principal (capturas):** [TOOL_UI_OVERVIEW.md](docs/TOOL_UI_OVERVIEW.md)
-- 🧩 **UserForms (galería):** [UI_FORMS_GALLERY.md](docs/UI_FORMS_GALLERY.md)
 
 ---
 

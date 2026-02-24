@@ -1,0 +1,10 @@
+.idea/
+portfolio_pack/
+scripts/archivo_index.json
+__pycache__/
+*.pyc
+*.frx
+dist/public_release/
+tools/prepublish_terms.local.txt
+docs/AUDIT_PORTFOLIO.md
+Migrar SAP.txt

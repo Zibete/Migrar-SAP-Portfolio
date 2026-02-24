@@ -25,7 +25,7 @@ Este repositorio presenta una automatización real (portfolio-safe) de **Cuentas
 
 ## 🔗 Accesos rápidos
 
-- 📄 **Deck (PDF, 7 slides):** [Migracion-Facturas-AP.pdf](assets/deck/Migracion-Facturas-AP.pdf)
+- 📄 **Deck (PDF, 7 slides):** [Migracion-Facturas-AP.pdf](assets/deck/Facturas-ASAP-Portfolio.pdf)
 - 🖥️ **UI principal (capturas):** [TOOL_UI_OVERVIEW.md](docs/TOOL_UI_OVERVIEW.md)
 - 🧩 **UserForms (galería):** [UI_FORMS_GALLERY.md](docs/UI_FORMS_GALLERY.md)
 - 📁 **Descripción General:** [PORTFOLIO_OVERVIEW.md](docs/PORTFOLIO_OVERVIEW.md)

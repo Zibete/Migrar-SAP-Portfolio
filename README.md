@@ -218,8 +218,9 @@ powershell -ExecutionPolicy Bypass -File tools/export_public_release.ps1
 
 ## 🖼️ Material visual
 
-- 📄 **Deck (PDF):** `assets/deck/Migracion-Facturas-AP.pdf`
-- 🧩 **Imágenes / Slides:** `assets/images/`
+- 📄 **Deck (PDF, 7 slides):** [Facturas-ASAP-Portfolio.pdf](assets/deck/Facturas-ASAP-Portfolio.pdf)
+- 🖥️ **UI principal (capturas):** [TOOL_UI_OVERVIEW.md](docs/TOOL_UI_OVERVIEW.md)
+- 🧩 **UserForms (galería):** [UI_FORMS_GALLERY.md](docs/UI_FORMS_GALLERY.md)
 
 ---
 

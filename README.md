@@ -11,7 +11,7 @@ Este repositorio presenta una automatización real (portfolio-safe) de **Cuentas
 
 > 📈 **Resultado real:** ~x8 en productividad operativa · de ~60 a ~500 documentos/día · errores operativos reducidos al mínimo
 
-![Pipeline](assets/demo2.png)
+![Pipeline](assets/end-to-end.png)
 
 > ⚠️ Versión pública: prioriza **arquitectura + reglas determinísticas + evidencia reproducible** sin exponer datos sensibles. Las integraciones reales (SAP/Outlook/portal) requieren entorno corporativo.
 

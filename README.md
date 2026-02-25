@@ -305,19 +305,6 @@ Esta versión pública elimina o reemplaza:
 
 ---
 
-## 📚 Documentación
-
-| Archivo | Descripción |
-|---|---|
-| `docs/CASE_STUDY.md` | Historia, enfoque y decisiones técnicas. |
-| `docs/TESTING.md` | Harness y ejecución de tests. |
-| `docs/PARSERS.md` | Contrato y estrategia de parsers VendorXX. |
-| `docs/MANIFEST.md` | Estructura del repo. |
-| `docs/NOTES_FORMS.md` | Forms y dependencias `.frx`. |
-| `docs/PUBLIC_RELEASE_CHECKLIST.md` | Checklist para publicación. |
-
----
-
 ## ⚖️ Marcas registradas
 
 SAP y el logo de SAP son marcas registradas de SAP SE. Este proyecto es un portfolio técnico y no está afiliado ni respaldado por SAP.

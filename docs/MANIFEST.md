@@ -3,7 +3,6 @@
 ## 🎯 Propósito
 
 Este documento resume cómo está organizada la extracción VBA en el repo público.
-Reemplaza la idea antigua de un único módulo monolítico.
 
 ---
 
@@ -24,12 +23,12 @@ La orquestación está distribuida en varias áreas:
 
 ---
 
-## ⚠️ Nota importante sobre `Módulo1.bas`
+## ⚠️ Nota sobre `src/vba/bootstrap/Módulo1.bas`
 
-`src/vba/bootstrap/Módulo1.bas` es un placeholder en este repositorio (archivo de atributos).
-La versión pública no depende de ese archivo como orquestador principal.
+En el proyecto original existía un módulo “monolítico” (miles de líneas) que concentraba gran parte de la orquestación y dependencias del entorno.
 
-Esto es intencional: la estructura modular versionada es la que se documenta y se evalúa.
+En este repo público, **`src/vba/bootstrap/Módulo1.bas` es solo un placeholder (stub)** que mantiene el nombre del módulo (`Attribute VB_Name`) pero **no contiene la implementación**.  
+Esto es intencional: evita publicar un monolito acoplado y guía la evaluación hacia la estructura modular, que es lo que se revisa en este portfolio.
 
 ---
 

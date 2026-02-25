@@ -27,9 +27,6 @@ Todas las imágenes viven en:
 assets/ui/forms/
 ```
 
-> Recomendación: evitar acentos en nombres de archivos para evitar problemas de path.  
-> Ej.: usar `Configuracion.png` (sin tilde).
-
 ---
 
 ## 📂 Índice de capturas

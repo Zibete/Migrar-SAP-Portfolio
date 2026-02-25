@@ -33,7 +33,7 @@ Outlook → PDFs → Validaciones → RetailWeb (RW) → SAP → Estado por fila
 
 ---
 
-## 🧱 Arquitectura pública (para evaluación técnica)
+## 🧱 Arquitectura pública
 
 | Módulo | Descripción |
 |---|---|
@@ -54,15 +54,15 @@ Outlook → PDFs → Validaciones → RetailWeb (RW) → SAP → Estado por fila
 
 ---
 
-## ⚠️ Limitaciones conocidas (y cómo se compensan en el portfolio)
+## ⚠️ Limitaciones conocidas
 
 - No se ejecutan SAP / Outlook / RetailWeb reales sin VPN y credenciales.
 - Los `UserForms` se versionan como `.frm` (texto), sin `.frx` binarios.
-- La UI se muestra con capturas mock/sanitizadas en el PDF/slides.
+- La UI se muestra con capturas mock/sanitizadas.
 
 ---
 
-## 🔐 Terminología pública (obligatoria)
+## 🔐 Terminología pública
 
 | Término | Significado |
 |---|---|

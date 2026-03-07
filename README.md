@@ -248,22 +248,10 @@ UserForms, progress, manejo de timeouts, rollback, protección de hojas, limpiez
 
 > Requiere Windows + Microsoft Excel instalado.
 
-**1) Correr tests headless del core**
+**Correr tests headless del core**
 
 ```powershell
 powershell -ExecutionPolicy Bypass -File tools/run_core_tests.ps1
-```
-
-**2) Scan de prepublicación (redacción/sanitización)**
-
-```powershell
-powershell -ExecutionPolicy Bypass -File tools/prepublish_scan.ps1
-```
-
-**3) Export del paquete público (snapshot para repo público)**
-
-```powershell
-powershell -ExecutionPolicy Bypass -File tools/export_public_release.ps1
 ```
 
 ---

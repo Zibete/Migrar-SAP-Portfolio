@@ -20,10 +20,12 @@ Attribute VB_Exposed = False
 
 Private Sub EntrarAdmin_Click()
     Dim adminPwd As String
+    Dim adminUser As String
 
     adminPwd = GetWorkbookUnprotectPassword()
+    adminUser = Environ$("MIGRAR_ADMIN_USER")
 
-    If UCase(Me.user) = "XMAP07" Then
+    If Len(adminUser) > 0 And UCase(Me.user) = UCase(adminUser) Then
 
         If adminPwd = "" Then
             MENSAJE = MsgBox("La password de administrador no esta configurada. Defina MIGRAR_PASSWORD en el entorno.", vbExclamation)

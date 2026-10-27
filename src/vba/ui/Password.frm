@@ -15,7 +15,6 @@ Attribute VB_Exposed = False
 '------------------------------------------------------------------------------
 ' File: Password.frm
 ' Purpose: VBA module extracted from legacy Excel app (portfolio version).
-' Note: Cosmetic formatting only. No behavior changes.
 '------------------------------------------------------------------------------
 
 Private Sub EntrarAdmin_Click()

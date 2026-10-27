@@ -83,6 +83,7 @@ Remove-IfExists -PathToRemove (Join-Path $releaseDir "docs\\AUDIT_PORTFOLIO.md")
 Remove-IfExists -PathToRemove (Join-Path $releaseDir "docs\\AUDIT_PUBLIC_RELEASE_DIST.md")
 Remove-IfExists -PathToRemove (Join-Path $releaseDir "docs\\PUBLIC_RELEASE_CHECKLIST.md")
 Remove-IfExists -PathToRemove (Join-Path $releaseDir "docs\\SCRIPTS.md")
+Remove-IfExists -PathToRemove (Join-Path (Join-Path $releaseDir "tools") "prepublish_terms.local.txt")
 Remove-FilesByPattern -RootPath $releaseDir -Filter "*.frx"
 Remove-IfExists -PathToRemove (Join-Path $releaseDir "scripts\\__pycache__")
 Remove-IfExists -PathToRemove (Join-Path $releaseDir "scripts\\archivo_index.json")

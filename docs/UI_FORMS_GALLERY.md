@@ -3,7 +3,7 @@
 ## 👥 Audiencia
 
 Este anexo es para quien quiera ver la **interfaz operativa** de la herramienta (formularios, pasos y controles).
-Si todavía no lo hiciste: empezá por [README.md](README.md).
+Si todavía no lo hiciste: empezá por [README.md](../README.md).
 
 ➡️ **Vista general (UI principal):** [TOOL_UI_OVERVIEW.md](TOOL_UI_OVERVIEW.md)
 

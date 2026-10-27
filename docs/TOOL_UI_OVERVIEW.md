@@ -2,7 +2,7 @@
 
 ## 👥 Audiencia
 Este anexo muestra la **UI principal** (tablero operativo) y cómo se usa en la práctica.
-Si todavía no lo hiciste: empezá por [README.md](README.md).
+Si todavía no lo hiciste: empezá por [README.md](../README.md).
 
 ➡️ **Vista de formularios (UI forms):** [UI_FORMS_GALLERY.md](UI_FORMS_GALLERY.md)
 

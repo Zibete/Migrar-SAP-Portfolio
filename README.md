@@ -7,9 +7,13 @@
 ![SAP](https://img.shields.io/badge/SAP-GUI%20Scripting-0FAAFF)
 ![Portfolio](https://img.shields.io/badge/Portfolio-Safe%20Release-6E56CF)
 
-Este repositorio presenta una automatización real (portfolio-safe) de **Cuentas a Pagar (AP)**: orquesta el ingreso de **facturas en PDF**, extrae y normaliza datos, cruza contra un portal interno (`RetailWeb`/`RW`), aplica **validaciones fiscales y de negocio**, y prepara/verifica la contabilización y el seguimiento en SAP.
+Este repositorio documenta una automatización real de **Cuentas a Pagar (AP)**, presentada en una versión pública y anonimizada: orquesta el ingreso de **facturas en PDF**, extrae y normaliza datos, cruza contra un portal interno (`RetailWeb`/`RW`), aplica **validaciones fiscales y de negocio**, y prepara/verifica la contabilización y el seguimiento en SAP.
 
-> 📈 **Resultado real:** ~x8 en productividad operativa · de ~60 a ~500 documentos/día · errores operativos reducidos al mínimo
+> 📈 **Productividad histórica reportada:** de ~60 a ~500 documentos/día (**~8×** en volumen diario).
+>
+> 📊 **Alcance operativo observado en SAP FI:** 3.932 de 7.198 documentos (**54,6 %** del volumen de un corte mensual), sobre **57 proveedores**. *No equivale al porcentaje automatizado.*
+>
+> ⏱️ **Eficiencia estimada:** de ~150 a ~21 segundos por comprobante comparable (**~86 % menos tiempo**). *No es un benchmark de las pruebas públicas.*
 
 ![Pipeline](assets/end-to-end.png)
 
@@ -58,7 +62,7 @@ Este repositorio presenta una automatización real (portfolio-safe) de **Cuentas
 | **Power Query como ETL embebido** | Uso de `Pdf.Tables` para extracción estructurada sin OCR, con transformaciones declarativas en lenguaje M. |
 | **Separación Core vs Adapters** | Aísla la lógica determinística (reglas) de los side-effects (IO), permitiendo testabilidad real. |
 | **Testing headless** | Runner propio en VBA que ejecuta validaciones con Excel invisible y reporta logs a archivos. |
-| **Publicación segura** | Export a `dist/` sanitizado, scan de términos sensibles y normalización de encoding. |
+| **Publicación controlada** | Export a `dist/`, escaneo textual de términos sensibles y normalización de encoding; requiere revisión humana. |
 
 ---
 
@@ -274,7 +278,7 @@ powershell -ExecutionPolicy Bypass -File tools/run_core_tests.ps1
 
 ## 🛡️ Seguridad y anonimización
 
-Esta versión pública elimina o reemplaza:
+Esta versión pública aplica sustituciones y anonimización a:
 
 - Proveedores reales, CUIT/CAE reales y datos sensibles.
 - Rutas/URLs internas.
